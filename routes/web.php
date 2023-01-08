@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SerieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', static function () {
-    return view('welcome');
-});
-    Route::get('/home', static function () {
-        return view('home');
-    });
+Route::get('/', [SerieController::class, 'index'])->name('series');
+Route::get('/series', [SerieController::class, 'index'])->name('series');
+Route::post('/series', [SerieController::class, 'store'])->name('create-series');
+Route::delete('/series', [SerieController::class, 'destroy'])->name('delete-series');
+Route::put('/series', [SerieController::class, 'update'])->name('update-series');
